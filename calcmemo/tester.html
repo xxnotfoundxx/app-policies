@@ -140,6 +140,23 @@
     line-height: 1.8;
   }
 
+  .btn {
+    display: inline-flex; align-items: center; gap: .5rem;
+    background: var(--accent); color: var(--paper);
+    text-decoration: none;
+    font-weight: 700; font-size: .95rem;
+    padding: .7rem 1.15rem; border-radius: 8px;
+    align-self: flex-start;
+  }
+  .btn[aria-disabled="true"] {
+    background: transparent; color: var(--muted);
+    border: 1px dashed var(--rule);
+    font-weight: 400;
+    cursor: default;
+  }
+  .trust { display: flex; flex-direction: column; gap: .8rem; }
+  .trust p { font-size: .92rem; line-height: 1.85; }
+
   footer {
     border-top: 1px solid var(--rule);
     padding-top: 1.4rem;
@@ -165,8 +182,8 @@
   </header>
 
   <section>
-    <p class="lede">趣味で Android アプリを作ってみました。せっかくなので Google Play に出したいんですが、<strong>「12人以上が14日間ずっと登録している」</strong>という条件をクリアしないと公開できないルールになっていて、そこで止まっています。よかったら手を貸してもらえませんか。</p>
-    <p class="small muted">入れっぱなしにしておいてもらえれば、それだけで条件は満たせます。毎日使わなくて大丈夫です。</p>
+    <p class="lede">趣味で Android アプリを作ってみました。Google Play で公開するには<strong>「12人以上が14日間つづけて登録している」</strong>という条件を満たす必要があって、そこで足踏みしています。よければ協力してもらえませんか。</p>
+    <p class="small muted">入れっぱなしにしておいてもらえれば、それだけで条件は満たせます。毎日使う必要はありません。</p>
   </section>
 
   <section>
@@ -199,56 +216,62 @@
   </section>
 
   <section>
-    <h2>お願いしたいこと</h2>
+    <h2>参加のしかた</h2>
+    <p class="small muted">Android で普段使っている Google アカウントでログインした状態で進めてください。別のアカウントだと参加できません。</p>
     <ol class="steps">
       <li>
         <div class="body">
-          <strong>Gmail のアドレスを教えてください</strong>
-          <p class="why">Google Play の仕組み上、参加する人のアドレスをこっちで登録しないといけません。Android で普段使っているアカウントのものをお願いします。</p>
+          <strong>グループに参加する</strong>
+          <p class="why">参加者の管理に Google グループを使っています。まずはここに入ってください。</p>
+          <a class="btn" href="#" aria-disabled="true">リンクは準備中です</a>
         </div>
       </li>
       <li>
         <div class="body">
-          <strong>送ったリンクを開いて、参加を押してください</strong>
-          <p class="why">登録が済んだらリンクを送ります。これを押してもらわないと参加した扱いにならないので、ここだけ忘れないでください。</p>
+          <strong>テストに参加する</strong>
+          <p class="why">グループに入ると、このリンクからテストに参加できるようになります。反映まで数時間かかることがあるので、うまくいかないときは少し時間をおいてから試してください。</p>
+          <a class="btn" href="#" aria-disabled="true">リンクは準備中です</a>
         </div>
       </li>
       <li>
         <div class="body">
           <strong>インストールして、14日はそのままで</strong>
-          <p class="why">使っても使わなくてもOKです。ただ14日たつ前に消えると最初から数え直しになるので、そこだけお願いします。</p>
+          <p class="why">参加すると Google Play からインストールできるようになります。使っても使わなくてもかまいません。ただ14日たつ前に消えると最初から数え直しになるので、そこだけお願いします。</p>
         </div>
       </li>
     </ol>
     <div class="callout">14日たったら消してもらって大丈夫です。気に入ったらそのまま使ってください。</div>
   </section>
 
+  <section class="trust">
+    <h2>あやしいものではありません</h2>
+    <p><strong>これは Google Play の正式なテストの仕組みです。</strong>「クローズドテスト」といって、公開前のアプリを限られた人に配るために Google が用意している機能です。アプリのファイルを直接送りつけたりはしません。<strong>インストールはいつもどおり Google Play から</strong>行います。</p>
+    <p><strong>こちらに分かるのは、参加してくれた人のメールアドレスだけです。</strong>アプリの中で何を計算したか、どれくらい使ったかは分かりません。このアプリはインターネットにつなぐ権限そのものを持っていないので、記録を送る先が存在しません。</p>
+    <p>連絡先・写真・位置情報などにアクセスする権限も一切持っていません。<a href="https://xxnotfoundxx.github.io/app-policies/calcmemo/privacy-policy.html">プライバシーポリシー</a>に詳しく書いてあります。</p>
+  </section>
+
   <section>
     <h2>先に答えておきます</h2>
     <dl class="qa">
-      <dt>お金かかる？</dt>
-      <dd>かかりません。無料だし、課金も広告もないです。</dd>
+      <dt>お金はかかる？</dt>
+      <dd>かかりません。無料ですし、課金も広告もありません。</dd>
 
       <dt>iPhone でも使える？</dt>
       <dd>Android だけです。Android 9 以上なら動きます。</dd>
 
-      <dt>毎日使わないとダメ？</dt>
-      <dd>大丈夫です、入れておいてもらえれば条件は満たせます。使ってみて「ここ使いにくい」とか言ってもらえたら嬉しいですが、義務ではないです。</dd>
+      <dt>毎日使わないとだめ？</dt>
+      <dd>大丈夫です。入れておいてもらえれば条件は満たせます。使ってみて「ここが使いにくい」などと言ってもらえると嬉しいですが、義務ではありません。</dd>
 
-      <dt>入力した内容ってどこかに送られる？</dt>
-      <dd>送られません。そもそもインターネットにつなぐ権限を持たせていないので、計算もメモも端末の外には出ません。</dd>
-
-      <dt>アドレスは何に使うの？</dt>
-      <dd>テストの参加者として登録するためだけです。他には使いませんし、他の参加者からも見えません。</dd>
+      <dt>グループに入ると何か届く？</dt>
+      <dd>テストの案内以外は送りません。終わったらグループから抜けてもらって大丈夫です。</dd>
 
       <dt>途中でやめられる？</dt>
-      <dd>いつでもやめられます。ただ14日以内に抜けると数え直しになっちゃうので、厳しそうなら先に言ってもらえると助かります。</dd>
+      <dd>いつでもやめられます。ただ14日たつ前に抜けると数え直しになってしまうので、難しそうなら先に言ってもらえると助かります。</dd>
     </dl>
   </section>
 
   <footer>
     <p>わからないことがあれば気軽に聞いてください。</p>
-    <p><a href="https://xxnotfoundxx.github.io/app-policies/calcmemo/privacy-policy.html">プライバシーポリシー</a></p>
   </footer>
 
 </div>
