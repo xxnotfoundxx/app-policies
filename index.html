@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>アプリの公開ページ</title>
+<style>
+  :root {
+    --paper: #FAFAFB; --ink: #1A1D2A; --muted: #5C6275;
+    --rule: #D6DEE3; --accent: #3D4EA8;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --paper: #13151D; --ink: #E6E8F0; --muted: #969CB0;
+      --rule: #2B3040; --accent: #93A0F0;
+    }
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; background: var(--paper); color: var(--ink);
+    font-family: system-ui, -apple-system, "Segoe UI", "Hiragino Sans",
+                 "Noto Sans JP", "Yu Gothic UI", sans-serif;
+    font-size: 16px; line-height: 1.9;
+    -webkit-font-smoothing: antialiased;
+  }
+  main {
+    max-width: 34rem; margin: 0 auto; padding: 3.5rem 1.35rem 5rem;
+    display: flex; flex-direction: column; gap: 2.5rem;
+  }
+  h1 { margin: 0; font-size: 1.5rem; letter-spacing: .01em; }
+  .sub { margin: .3rem 0 0; color: var(--muted); font-size: .95rem; }
+  section { display: flex; flex-direction: column; gap: .9rem; }
+  h2 {
+    margin: 0; font-size: 1.05rem;
+    padding-top: 1.5rem; border-top: 1px solid var(--rule);
+  }
+  ul { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: .7rem; }
+  li { display: flex; flex-direction: column; gap: .15rem; }
+  a { color: var(--accent); text-underline-offset: .18em; font-weight: 700; }
+  a:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 3px; }
+  .desc { color: var(--muted); font-size: .88rem; line-height: 1.7; }
+  footer {
+    border-top: 1px solid var(--rule); padding-top: 1.3rem;
+    color: var(--muted); font-size: .85rem;
+  }
+</style>
+</head>
+<body>
+<main>
+  <header>
+    <h1>アプリの公開ページ</h1>
+    <p class="sub">個人で開発している Android アプリの、公開用ドキュメント置き場です。</p>
+  </header>
+
+  <section>
+    <h2>メモ電卓</h2>
+    <p class="desc">計算した「理由」ごと残せる電卓。計算履歴にメモを付けて残せて、買い物の単価比較もできます。</p>
+    <ul>
+      <li>
+        <a href="calcmemo/privacy-policy.html">プライバシーポリシー</a>
+        <span class="desc">アプリが扱う情報の取り扱いについて</span>
+      </li>
+      <li>
+        <a href="calcmemo/tester.html">テスター向けの案内</a>
+        <span class="desc">公開前テストへの参加をお願いするページ</span>
+      </li>
+    </ul>
+  </section>
+
+  <footer>
+    お問い合わせ: <a href="mailto:xxnotfoundxx@gmail.com">xxnotfoundxx@gmail.com</a>
+  </footer>
+</main>
+</body>
+</html>
