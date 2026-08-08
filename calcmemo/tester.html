@@ -136,6 +136,12 @@
   }
   .fold-hint { font-size: .84rem; color: var(--muted); font-weight: 400; }
 
+  /* 節の中に置く小さい折りたたみ。見出しではなく操作に見せる */
+  details.fold.inner { border-top: 0; padding-top: 0; }
+  details.fold.inner > summary { font-size: .93rem; color: var(--accent); }
+  details.fold.inner > summary::after { font-size: .78em; color: var(--accent); }
+  details.fold.inner .fold-body { padding-top: .8rem; }
+
   .lede { font-size: 1.02rem; }
   .muted { color: var(--muted); }
   .small { font-size: .88rem; }
@@ -275,11 +281,9 @@
   <section>
     <h2>どんなアプリか</h2>
     <ul class="facts">
-      <li>「=」を押した瞬間に履歴に残って、その場でメモを書けます。「この 3,280 って何だっけ」がなくなります</li>
-      <li>税込・割引・端数処理（切上、切捨、四捨五入）がキーひとつ。長押しすると自分がよく使う数字に変えられます</li>
-      <li>買い物用に単価の比較もできます。kg と g、L と ml は勝手に換算してくれるので、内容量が違っても比べられます</li>
-      <li>見た目はかなりいじれます。テーマ3種類、ライト・ダーク、書体、文字の太さと大きさ、キーの高さや形、電卓の表示の並びまで</li>
-      <li>広告なし、登録なし。そもそも通信する機能を持たせていません</li>
+      <li>計算した結果が、書いたメモごと履歴に残ります</li>
+      <li>買い物用に、2つの商品の単価を比べられます</li>
+      <li>広告なし、登録なし、通信なし</li>
     </ul>
     <div class="shots">
       <figure>
@@ -299,6 +303,20 @@
         <figcaption>見た目は好きに変えられる</figcaption>
       </figure>
     </div>
+
+    <details class="fold inner">
+      <summary>できることをもう少し詳しく</summary>
+      <div class="fold-body">
+        <ul class="facts">
+          <li>「=」を押した瞬間に履歴へ入るので、書き留める操作が要りません。「この 3,280 って何だっけ」がなくなります</li>
+          <li>履歴は式・結果・メモから検索できて、メモの付いたものだけ絞り込めます。コピーや共有、CSV の書き出しも</li>
+          <li>税込・割引・端数処理（切上、切捨、四捨五入）がキーひとつ。長押しすると自分がよく使う数字に変えられます</li>
+          <li>単価比較は kg と g、L と ml を自動で換算。マスの中に「198×3」のような式も書けるので、3本入りの比較もそのまま</li>
+          <li>√ や log、sin cos tan、メモリー（M+ M−）、GT（「=」のたびの自動合計）もあります</li>
+          <li>見た目はかなりいじれます。テーマ3種類、ライト・ダーク、書体、文字の太さと大きさ、キーの高さや形、電卓の表示の並びまで</li>
+        </ul>
+      </div>
+    </details>
   </section>
 
   <section>
