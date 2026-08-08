@@ -157,6 +157,30 @@
   .trust { display: flex; flex-direction: column; gap: .8rem; }
   .trust p { font-size: .92rem; line-height: 1.85; }
 
+  .appendix { font-size: .92rem; }
+  .appendix h3 {
+    font-size: .95rem; font-weight: 700;
+    margin: .9rem 0 -.2rem;
+  }
+  .appendix p { line-height: 1.85; }
+  .appendix ul { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: .4rem; }
+  .appendix ul li { display: flex; gap: .55rem; align-items: baseline; }
+  .appendix ul li::before { content: "・"; flex: none; color: var(--muted); }
+  .split { display: flex; flex-direction: column; gap: 1rem; }
+  .split .label {
+    font-weight: 700; font-size: .88rem;
+    letter-spacing: .04em;
+  }
+  .split .yes { color: var(--accent); }
+  code {
+    font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    font-size: .88em;
+    background: var(--accent-soft);
+    padding: .1em .35em;
+    border-radius: 4px;
+    word-break: break-all;
+  }
+
   footer {
     border-top: 1px solid var(--rule);
     padding-top: 1.4rem;
@@ -171,7 +195,7 @@
 <div class="page">
 
   <header class="masthead">
-    <p class="eyebrow">ちょっとお願いがあります</p>
+    <p class="eyebrow">Android アプリのテスター募集</p>
     <div class="id-row">
       <img src="data:image/png;base64,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" alt="メモ電卓のアイコン">
       <div>
@@ -272,6 +296,49 @@
       <dt>途中でやめられる？</dt>
       <dd>いつでもやめられます。ただ期間中に抜けると数え直しになってしまうので、難しそうなら先に言ってもらえると助かります。</dd>
     </dl>
+  </section>
+
+  <section class="appendix">
+    <h2>付録: 仕組みの説明</h2>
+    <p class="muted">「テスト」と聞いて身構えた方向けの、技術的な補足です。読み飛ばしても問題ありません。</p>
+
+    <h3>クローズドテストとは</h3>
+    <p>Google Play が公式に用意している、公開前のアプリを限られた人にだけ配る仕組みです。開発者がアプリのファイルを直接渡すのではなく、<strong>配信も更新も通常どおり Google Play を経由します</strong>。配信されるアプリは製品版と同じように Google の審査を通っています。</p>
+    <p>「提供元不明のアプリを許可する」といった設定変更は必要ありません。必要になる場合は、Play を経由していない証拠なので疑ってください。</p>
+
+    <h3>なぜ Google グループを使うのか</h3>
+    <p>Play Console では、テスト参加者を「メールアドレスを直接登録する」か「Google グループを指定する」かのどちらかで指定します。グループを使うと、<strong>参加者から個別にアドレスを聞き出して登録する手間がなくなります</strong>。あなたがグループに入るだけで対象者になります。</p>
+    <p>このグループは、メンバー一覧の閲覧と投稿を管理者だけに制限してあります。参加者どうしでアドレスが見えたり、他の参加者からメールが届いたりすることはありません。</p>
+
+    <h3>開発者に見えるもの、見えないもの</h3>
+    <div class="split">
+      <div>
+        <p class="label yes">見えるもの</p>
+        <ul>
+          <li>グループに参加している Google アカウントのメールアドレス（アカウントに表示名を設定していれば、その名前も）</li>
+          <li>Play Console 上の集計値（インストール数、国、Android のバージョンや端末の機種の内訳）</li>
+          <li>アプリが強制終了した場合のエラー情報（発生箇所、機種、OS バージョン）</li>
+        </ul>
+      </div>
+      <div>
+        <p class="label">見えないもの</p>
+        <ul>
+          <li>アプリに入力した計算式、結果、メモの内容</li>
+          <li>いつ、どれくらい使ったか</li>
+          <li>連絡先、写真、位置情報、他のアプリの情報</li>
+          <li>Google アカウントの中身（パスワード、メールの内容、他のサービスの利用状況）</li>
+        </ul>
+      </div>
+    </div>
+    <p>エラー情報は Android の「使用状況と診断情報の送信」が端末側でオンの場合に Google 経由で届くもので、<strong>アプリが独自に送信しているわけではありません</strong>。端末の設定からいつでも止められます。</p>
+    <p>そもそもこのアプリは<strong>インターネットに接続する権限（<code>android.permission.INTERNET</code>）を持っていません</strong>。権限がなければ OS が通信そのものを許可しないため、入力した内容を送る経路が存在しません。</p>
+
+    <h3>ご自分で確かめる方法</h3>
+    <ul>
+      <li>Google Play のアプリページを一番下までスクロールすると「アプリの権限」→「詳細を表示」があります。ここに何が要求されているか全部出ます</li>
+      <li>同じページの「データセーフティ」に、収集・共有するデータの申告が出ます</li>
+      <li><a href="https://xxnotfoundxx.github.io/app-policies/calcmemo/privacy-policy.html">プライバシーポリシー</a>に、保存先やバックアップの扱いまで書いてあります</li>
+    </ul>
   </section>
 
   <footer>
