@@ -51,7 +51,7 @@
   *, *::before, *::after { box-sizing: border-box; }
   /* flex/grid の子は既定で min-width:auto のため、長い語やスクロール領域が
      親をはみ出させる。0 に落として横スクロールを防ぐ */
-  section, section > *, ol.steps li, .split > div { min-width: 0; }
+  section, section > *, details, details > *, ol.steps li, .split > div { min-width: 0; }
   img { max-width: 100%; height: auto; }
 
   html { -webkit-text-size-adjust: 100%; }
@@ -102,6 +102,39 @@
     border-top: 1px solid var(--rule);
     letter-spacing: .02em;
   }
+
+  /* 参加のしかたを主役にするため、参照用の節は畳んでおく */
+  details.fold { border-top: 1px solid var(--rule); padding-top: 1.6rem; }
+  details.fold > summary {
+    cursor: pointer;
+    list-style: none;
+    font-size: 1.06rem;
+    font-weight: 700;
+    letter-spacing: .02em;
+    display: flex;
+    align-items: center;
+    gap: .6rem;
+  }
+  details.fold > summary::-webkit-details-marker { display: none; }
+  details.fold > summary::after {
+    content: "▶";
+    margin-left: auto;
+    font-size: .72em;
+    color: var(--muted);
+  }
+  details.fold[open] > summary::after { content: "▼"; }
+  details.fold > summary:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 4px;
+    border-radius: 4px;
+  }
+  .fold-body {
+    display: flex;
+    flex-direction: column;
+    gap: .9rem;
+    padding-top: 1.1rem;
+  }
+  .fold-hint { font-size: .84rem; color: var(--muted); font-weight: 400; }
 
   .lede { font-size: 1.02rem; }
   .muted { color: var(--muted); }
@@ -304,16 +337,19 @@
     <div class="callout"><strong>目安は3週間ほどです。</strong>14日間の数え方が「12人そろってから」なので、早く参加してくれた人ほど長めになります。<strong>終わったら「もう大丈夫です」と連絡します</strong>ので、それまで置いておいてもらえると助かります。もちろん気に入ったらそのまま使ってください。</div>
   </section>
 
-  <section class="trust">
-    <h2>あやしいものではありません</h2>
-    <p><strong>これは Google Play の正式なテストの仕組みです。</strong>「クローズドテスト」といって、公開前のアプリを限られた人に配るために Google が用意している機能です。アプリのファイルを直接送りつけたりはしません。<strong>インストールはいつもどおり Google Play から</strong>行います。</p>
-    <p><strong>こちらに分かるのは、参加してくれた人のメールアドレスだけです。</strong>アプリの中で何を計算したか、どれくらい使ったかは分かりません。このアプリはインターネットにつなぐ権限そのものを持っていないので、記録を送る先が存在しません。</p>
-    <p>連絡先・写真・位置情報などにアクセスする権限も一切持っていません。<a href="https://xxnotfoundxx.github.io/app-policies/calcmemo/privacy-policy.html">プライバシーポリシー</a>に詳しく書いてあります。</p>
-    <p><strong>参加者どうしでメールアドレスが見えることはありません。</strong>メンバー一覧を見られるのも、グループに投稿できるのも管理者だけに設定してあるので、他の参加者からメールが届くこともありません。いただいたアドレスは、テストへの参加登録以外には使いません。</p>
-  </section>
+  <details class="fold trust">
+    <summary>安全性とプライバシー</summary>
+    <div class="fold-body">
+      <p><strong>これは Google Play の正式なテストの仕組みです。</strong>「クローズドテスト」といって、公開前のアプリを限られた人に配るために Google が用意している機能です。アプリのファイルを直接送りつけたりはしません。<strong>インストールはいつもどおり Google Play から</strong>行います。</p>
+      <p><strong>こちらに分かるのは、参加してくれた人のメールアドレスだけです。</strong>アプリの中で何を計算したか、どれくらい使ったかは分かりません。このアプリはインターネットにつなぐ権限そのものを持っていないので、記録を送る先が存在しません。</p>
+      <p>連絡先・写真・位置情報などにアクセスする権限も一切持っていません。<a href="https://xxnotfoundxx.github.io/app-policies/calcmemo/privacy-policy.html">プライバシーポリシー</a>に詳しく書いてあります。</p>
+      <p><strong>参加者どうしでメールアドレスが見えることはありません。</strong>メンバー一覧を見られるのも、グループに投稿できるのも管理者だけに設定してあるので、他の参加者からメールが届くこともありません。いただいたアドレスは、テストへの参加登録以外には使いません。</p>
+    </div>
+  </details>
 
-  <section>
-    <h2>先に答えておきます</h2>
+  <details class="fold">
+    <summary>よくある質問</summary>
+    <div class="fold-body">
     <dl class="qa">
       <dt>お金はかかる？</dt>
       <dd>かかりません。無料ですし、課金も広告もありません。</dd>
@@ -333,12 +369,12 @@
       <dt>途中でやめられる？</dt>
       <dd>いつでもやめられます。ただ期間中に抜けると数え直しになってしまうので、難しそうなら先に言ってもらえると助かります。</dd>
     </dl>
-  </section>
+    </div>
+  </details>
 
-  <section class="appendix">
-    <h2>付録: 仕組みの説明</h2>
-    <p class="muted">「テスト」と聞いて身構えた方向けの、技術的な補足です。読み飛ばしても問題ありません。</p>
-
+  <details class="fold appendix">
+    <summary>仕組みの詳しい説明 <span class="fold-hint">技術的な補足</span></summary>
+    <div class="fold-body">
     <h3>クローズドテストとは</h3>
     <p>Google Play が公式に用意している、公開前のアプリを限られた人にだけ配る仕組みです。開発者がアプリのファイルを直接渡すのではなく、<strong>配信も更新も通常どおり Google Play を経由します</strong>。配信されるアプリは製品版と同じように Google の審査を通っています。</p>
     <p>「提供元不明のアプリを許可する」といった設定変更は必要ありません。必要になる場合は、Play を経由していない証拠なので疑ってください。</p>
@@ -376,7 +412,8 @@
       <li>同じページの「データセーフティ」に、収集・共有するデータの申告が出ます</li>
       <li><a href="https://xxnotfoundxx.github.io/app-policies/calcmemo/privacy-policy.html">プライバシーポリシー</a>に、保存先やバックアップの扱いまで書いてあります</li>
     </ul>
-  </section>
+    </div>
+  </details>
 
   <footer>
     <p>わからないことがあれば気軽に聞いてください。</p>
