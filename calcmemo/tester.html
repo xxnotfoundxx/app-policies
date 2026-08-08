@@ -39,6 +39,13 @@
     --shadow: 0 1px 2px rgba(26,29,42,.06), 0 8px 24px rgba(26,29,42,.07);
   }
 
+  *, *::before, *::after { box-sizing: border-box; }
+  /* flex/grid の子は既定で min-width:auto のため、長い語やスクロール領域が
+     親をはみ出させる。0 に落として横スクロールを防ぐ */
+  section, section > *, ol.steps li, .split > div { min-width: 0; }
+  img { max-width: 100%; height: auto; }
+
+  html { -webkit-text-size-adjust: 100%; }
   body {
     background: var(--paper);
     color: var(--ink);
@@ -46,9 +53,11 @@
                  "Noto Sans JP", "Yu Gothic UI", sans-serif;
     font-size: 16px;
     line-height: 1.9;
+    overflow-wrap: break-word;
     -webkit-font-smoothing: antialiased;
   }
   .page {
+    width: 100%;
     max-width: 34rem;
     margin: 0 auto;
     padding: 3rem 1.35rem 5rem;
@@ -190,6 +199,17 @@
   }
   a { color: var(--accent); text-underline-offset: .18em; }
   a:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 3px; }
+
+  @media (max-width: 430px) {
+    .page { padding: 2.25rem 1.05rem 4rem; gap: 2.25rem; }
+    h1 { font-size: 1.5rem; }
+    .id-row img { width: 48px; height: 48px; border-radius: 11px; }
+    /* 幅の狭い端末では 2枚並べると小さすぎて中身が読めない */
+    .shots figure { width: 66%; }
+    .shots { margin-inline: -1.05rem; padding-inline: 1.05rem; }
+    ol.steps li { grid-template-columns: 1.65rem 1fr; gap: .7rem; }
+    ol.steps li::before { width: 1.65rem; height: 1.65rem; font-size: .88rem; }
+  }
 </style>
 
 <div class="page">
